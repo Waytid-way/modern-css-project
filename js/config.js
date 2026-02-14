@@ -16,9 +16,9 @@ const CONFIG = {
     
     // Real Love Page Settings
     love: {
-        partnerName: "Baby",
-        yourName: "Your Name",
-        anniversaryDate: "2024-02-14",
+        partnerName: "มายด์ (ไอเด่ก)",
+        yourName: "พี่เว",
+        anniversaryDate: "2023-10-29",
         specialDate: "2026-02-14",
         
         messages: {
@@ -33,15 +33,15 @@ const CONFIG = {
         memories: [
             {
                 title: "First Date",
-                description: "The day everything changed",
+                description: "จำได้มั้ยที่เราไปดรีมเวิลด้วยกัน เรารีบตรงไปบ้านหิมะเพราะมันใกล้จะปิดแล้ว 5555",
                 image: "assets/images/memory1.jpg",
-                date: "2024-01-15"
+                date: "2023-09-15"
             },
             {
-                title: "First Kiss",
-                description: "Magical moment under the stars",
+                title: "ไปเค้าดาวน์ด้วยกันปีแรก",
+                description: "วันนั้นเราไปไอคอนสยามกัน 4 คน เค้าดาวน์สนุกนะ แต่พี่ยังจำโมเม้นตอนเราหาทางกลับบ้านไม่ได้ตอนนั้นแบบ สิ้นหวังมาก 5555",
                 image: "assets/images/memory2.jpg", 
-                date: "2024-02-14"
+                date: "2023-12-31"
             },
             {
                 title: "Our Adventure",
@@ -79,7 +79,7 @@ const CONFIG = {
         ],
         
         features: {
-            backgroundMusic: true,
+            backgroundMusic: false,
             musicAutoplay: false,
             musicFile: "assets/music/love-song.mp3",
             showCountdown: true,

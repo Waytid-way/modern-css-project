@@ -480,38 +480,55 @@ class LoveFeatures {
     initializeMusic() {
         if (!this.config.love.features.backgroundMusic) return;
 
-        // Create music toggle button
-        const musicToggle = document.createElement('button');
-        musicToggle.className = 'music-toggle';
-        musicToggle.innerHTML = '🎵';
-        musicToggle.title = 'Toggle Music';
-        
-        document.body.appendChild(musicToggle);
-
         // Create audio element
         this.audioElement = new Audio(this.config.love.features.musicFile);
         this.audioElement.loop = true;
         this.audioElement.volume = 0.5;
 
-        musicToggle.addEventListener('click', () => {
-            if (this.audioElement.paused) {
-                this.audioElement.play();
-                musicToggle.innerHTML = '🎶';
-                musicToggle.classList.add('playing');
-            } else {
-                this.audioElement.pause();
-                musicToggle.innerHTML = '🎵';
-                musicToggle.classList.remove('playing');
+        // Check if audio file can be loaded
+        this.audioElement.addEventListener('error', (e) => {
+            console.warn('Music file not found or cannot be loaded:', this.config.love.features.musicFile);
+            // Remove music toggle if audio fails to load
+            const musicToggle = document.querySelector('.music-toggle');
+            if (musicToggle) {
+                musicToggle.remove();
             }
         });
 
-        // Auto-play if enabled
-        if (this.config.love.features.musicAutoplay) {
-            // Note: Most browsers block autoplay, so we'll handle it gracefully
-            this.audioElement.play().catch(() => {
-                console.log('Autoplay blocked - user interaction required');
+        // Only create toggle button if audio loads successfully
+        this.audioElement.addEventListener('canplaythrough', () => {
+            // Create music toggle button
+            const musicToggle = document.createElement('button');
+            musicToggle.className = 'music-toggle';
+            musicToggle.innerHTML = '🎵';
+            musicToggle.title = 'Toggle Music';
+            
+            document.body.appendChild(musicToggle);
+
+            musicToggle.addEventListener('click', () => {
+                if (this.audioElement.paused) {
+                    this.audioElement.play().catch(() => {
+                        console.log('Audio playback failed');
+                    });
+                    musicToggle.innerHTML = '🎶';
+                    musicToggle.classList.add('playing');
+                } else {
+                    this.audioElement.pause();
+                    musicToggle.innerHTML = '🎵';
+                    musicToggle.classList.remove('playing');
+                }
             });
-        }
+
+            // Auto-play if enabled
+            if (this.config.love.features.musicAutoplay) {
+                this.audioElement.play().catch(() => {
+                    console.log('Autoplay blocked - user interaction required');
+                });
+            }
+        });
+
+        // Try to load the audio file
+        this.audioElement.load();
     }
 
     createFloatingHeart() {

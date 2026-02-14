@@ -345,8 +345,8 @@ class PerformanceManager {
     preloadResources() {
         const criticalResources = [
             'css/fake-style.css',
-            'css/love-style.css',
             'css/animations.css',
+            'css/responsive.css',
             'js/config.js',
             'js/transition.js',
             'js/love-features.js'
