@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Design Project</title>
+    <meta name="description" content="A study of modern CSS animations and JavaScript interactions">
+    <link rel="stylesheet" href="css/fake-style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fake Opening Page -->
+    <div id="fakePage" class="fake-page">
+        <!-- Navigation -->
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <h1>WebDev Project</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Interactive Web Design Project</h1>
+                <p class="hero-subtitle">A comprehensive study of modern CSS animations and JavaScript interactions</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="secretTrigger">View Demo</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="demo-box">
+                    <div class="demo-element"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About This Project</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>This project demonstrates advanced web development techniques including CSS Grid, Flexbox, custom animations, and interactive JavaScript components. The focus is on creating responsive, performant, and accessible web interfaces.</p>
+                        <p>Key technologies used: HTML5 semantic markup, CSS3 with custom properties, vanilla JavaScript for interactions, and modern browser APIs for enhanced functionality.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="code-preview">
+                            <div class="code-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="code-content">
+                                <pre><code>/* Modern CSS Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.element {
+  animation: fadeIn 0.3s ease-in;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Modern CSS Animations</h3>
+                        <p>Smooth 60fps animations using CSS transforms and transitions for optimal performance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Responsive Design</h3>
+                        <p>Mobile-first approach with breakpoints for all device sizes from 320px to 1440px.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Performance Optimized</h3>
+                        <p>Lazy loading, minified assets, and optimized animations for fast load times.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">♿</div>
+                        <h3>Accessibility</h3>
+                        <p>ARIA labels, keyboard navigation, and focus states for inclusive design.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2 class="section-title">Project Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">Animation Demo</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">Responsive Layout</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">Interactive Components</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">Performance Metrics</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Project Information</h3>
+                        <p>This is a demonstration project showcasing modern web development capabilities.</p>
+                        <div class="contact-details">
+                            <p><strong>Author:</strong> Web Developer</p>
+                            <p><strong>Version:</strong> 1.0.0</p>
+                            <p><strong>Last Updated:</strong> 2024</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Interactive Web Design Project. Educational purposes only.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Real Love Website (Initially Hidden) -->
+    <div id="lovePage" class="love-page hidden">
+        <!-- Love content will be dynamically loaded here -->
+        <div class="love-container">
+            <div class="love-header">
+                <h1 class="love-title">For My Love</h1>
+                <p class="love-subtitle">You light up my world ✨</p>
+            </div>
+            
+            <!-- Love Features Container -->
+            <div id="loveFeatures">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Transition Overlay -->
+    <div id="transitionOverlay" class="transition-overlay hidden">
+        <div class="transition-content">
+            <div class="heart-animation">❤️</div>
+            <p class="transition-text">Loading something special...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/transition.js"></script>
+    <script src="js/love-features.js"></script>
+    <script src="js/performance.js"></script>
+</body>
+</html>

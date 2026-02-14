@@ -1,0 +1,666 @@
+/* Love Website Styles - Romantic & Beautiful */
+
+/* CSS Variables for Love Theme */
+:root {
+    --love-primary: #ff6b9d;
+    --love-secondary: #feca57;
+    --love-accent: #48dbfb;
+    --love-pink: #ff9ff3;
+    --love-purple: #ee5a6f;
+    --love-red: #ee5a24;
+    --love-white: #ffffff;
+    --love-light: rgba(255, 255, 255, 0.9);
+    --love-dark: rgba(0, 0, 0, 0.8);
+    --love-gradient: linear-gradient(135deg, #ff6b9d 0%, #feca57 50%, #48dbfb 100%);
+    --love-font-cursive: 'Great Vibes', cursive;
+    --love-font-elegant: 'Cormorant Garamond', serif;
+    --love-shadow: rgba(0, 0, 0, 0.2);
+    --love-glow: rgba(255, 255, 255, 0.8);
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;600;700&display=swap');
+
+/* Love Page Base Styles */
+.love-page {
+    background: var(--love-gradient);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+    font-family: var(--love-font-elegant);
+    color: var(--love-white);
+    overflow-x: hidden;
+}
+
+.love-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Love Header */
+.love-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: slideInDown 1s ease-out;
+}
+
+.love-title {
+    font-family: var(--love-font-cursive);
+    font-size: 4rem;
+    font-weight: 400;
+    color: var(--love-white);
+    text-shadow: 2px 2px 4px var(--love-dark);
+    margin-bottom: 1rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.love-subtitle {
+    font-size: 1.8rem;
+    color: var(--love-light);
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Love Features Container */
+.love-features {
+    display: grid;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Feature Sections */
+.love-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px var(--love-shadow);
+    animation: fadeInUp 1s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.love-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px var(--love-shadow);
+}
+
+.love-section-title {
+    font-family: var(--love-font-cursive);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--love-white);
+    text-shadow: 1px 1px 2px var(--love-dark);
+}
+
+/* Kiss Counter */
+.kiss-counter {
+    text-align: center;
+    padding: 2rem;
+}
+
+.kiss-display {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--love-primary);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px var(--love-dark);
+}
+
+.kiss-button {
+    background: var(--love-primary);
+    color: var(--love-white);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px var(--love-shadow);
+    font-family: var(--love-font-elegant);
+    font-weight: 600;
+}
+
+.kiss-button:hover {
+    background: var(--love-purple);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px var(--love-shadow);
+}
+
+.kiss-button:active {
+    transform: translateY(0);
+}
+
+.kiss-milestone {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--love-light);
+    min-height: 1.5rem;
+}
+
+/* Love Meter */
+.love-meter {
+    padding: 2rem;
+}
+
+.love-meter-container {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 5px 10px var(--love-shadow);
+}
+
+.love-meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--love-primary), var(--love-secondary), var(--love-accent));
+    border-radius: 25px;
+    transition: width 2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-meter-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+.love-meter-text {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--love-white);
+}
+
+/* Memory Gallery */
+.memory-gallery {
+    padding: 2rem;
+}
+
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.memory-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.memory-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px var(--love-shadow);
+}
+
+.memory-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: linear-gradient(45deg, var(--love-primary), var(--love-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--love-white);
+    font-size: 3rem;
+}
+
+.memory-content {
+    padding: 1.5rem;
+}
+
+.memory-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--love-white);
+}
+
+.memory-description {
+    color: var(--love-light);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.memory-date {
+    color: var(--love-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Love Notes */
+.love-notes {
+    padding: 2rem;
+}
+
+.notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.love-note {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(-2deg);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.love-note:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.love-note:hover {
+    transform: rotate(0deg) scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.love-note::before {
+    content: '💌';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.5rem;
+}
+
+.note-text {
+    font-family: var(--love-font-cursive);
+    font-size: 1.2rem;
+    color: var(--love-white);
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Reasons List */
+.reasons-list {
+    padding: 2rem;
+}
+
+.reasons-container {
+    max-width: 800px;
+    margin: 2rem auto 0;
+}
+
+.reason-item {
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.reason-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.reason-header {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+}
+
+.reason-header:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.reason-number {
+    background: var(--love-primary);
+    color: var(--love-white);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.reason-text {
+    flex: 1;
+    margin-left: 1rem;
+    color: var(--love-white);
+    font-size: 1.1rem;
+}
+
+.reason-toggle {
+    color: var(--love-light);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.reason-item.expanded .reason-toggle {
+    transform: rotate(180deg);
+}
+
+.reason-detail {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--love-light);
+    line-height: 1.6;
+}
+
+.reason-item.expanded .reason-detail {
+    max-height: 200px;
+    padding: 0 1.5rem 1rem;
+}
+
+/* Countdown Timer */
+.countdown-timer {
+    padding: 2rem;
+    text-align: center;
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    min-width: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.countdown-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--love-primary);
+    display: block;
+    text-shadow: 2px 2px 4px var(--love-dark);
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    color: var(--love-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+.countdown-message {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: var(--love-white);
+    font-style: italic;
+}
+
+/* Photo Carousel */
+.photo-carousel {
+    padding: 2rem;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px var(--love-shadow);
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(45deg, var(--love-primary), var(--love-secondary));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--love-white);
+    font-size: 2rem;
+}
+
+.carousel-slide.active {
+    display: flex;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--love-white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--love-white);
+    transform: scale(1.2);
+}
+
+/* Music Controls */
+.music-controls {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.music-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: var(--love-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px var(--love-shadow);
+}
+
+.music-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.music-toggle.playing {
+    animation: pulse 2s infinite;
+}
+
+/* Love Quotes */
+.love-quotes {
+    padding: 2rem;
+    text-align: center;
+}
+
+.quote-container {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-text {
+    font-family: var(--love-font-cursive);
+    font-size: 1.8rem;
+    color: var(--love-white);
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px var(--love-dark);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animations */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px var(--love-glow); }
+    to { text-shadow: 0 0 20px var(--love-glow), 0 0 30px var(--love-glow); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .love-title {
+        font-size: 2.5rem;
+    }
+    
+    .love-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .love-section {
+        padding: 1.5rem;
+    }
+    
+    .love-section-title {
+        font-size: 2rem;
+    }
+    
+    .kiss-display {
+        font-size: 2rem;
+    }
+    
+    .memories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .countdown-display {
+        gap: 1rem;
+    }
+    
+    .countdown-item {
+        min-width: 80px;
+        padding: 1rem;
+    }
+    
+    .countdown-number {
+        font-size: 2rem;
+    }
+    
+    .carousel-slide {
+        height: 250px;
+    }
+    
+    .quote-text {
+        font-size: 1.4rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .love-page {
+        animation: none;
+    }
+    
+    .love-section:hover {
+        transform: none;
+    }
+    
+    .memory-card:hover {
+        transform: none;
+    }
+    
+    .love-note:hover {
+        transform: none;
+    }
+    
+    .music-toggle.playing {
+        animation: none;
+    }
+}
