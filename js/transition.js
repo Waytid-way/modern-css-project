@@ -387,7 +387,11 @@ class TransitionManager {
         const overlay = document.getElementById('transitionOverlay');
         overlay.style.animation = 'fadeOut 0.5s ease-in-out';
         
-        return new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Actually hide the overlay after fade out
+        overlay.classList.add('hidden');
+        overlay.style.animation = '';
     }
 
     startFloatingHearts() {
