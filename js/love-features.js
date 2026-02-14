@@ -480,55 +480,142 @@ class LoveFeatures {
     initializeMusic() {
         if (!this.config.love.features.backgroundMusic) return;
 
-        // Create audio element
-        this.audioElement = new Audio(this.config.love.features.musicFile);
-        this.audioElement.loop = true;
-        this.audioElement.volume = 0.5;
+        // Load YouTube IFrame API
+        this.loadYouTubeAPI();
 
-        // Check if audio file can be loaded
-        this.audioElement.addEventListener('error', (e) => {
-            console.warn('Music file not found or cannot be loaded:', this.config.love.features.musicFile);
-            // Remove music toggle if audio fails to load
-            const musicToggle = document.querySelector('.music-toggle');
-            if (musicToggle) {
-                musicToggle.remove();
-            }
-        });
+        // Initialize music toggle button
+        this.initializeMusicToggle();
+    }
 
-        // Only create toggle button if audio loads successfully
-        this.audioElement.addEventListener('canplaythrough', () => {
-            // Create music toggle button
-            const musicToggle = document.createElement('button');
-            musicToggle.className = 'music-toggle';
-            musicToggle.innerHTML = '🎵';
-            musicToggle.title = 'Toggle Music';
-            
-            document.body.appendChild(musicToggle);
+    loadYouTubeAPI() {
+        // Load YouTube IFrame Player API if not already loaded
+        if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-            musicToggle.addEventListener('click', () => {
-                if (this.audioElement.paused) {
-                    this.audioElement.play().catch(() => {
-                        console.log('Audio playback failed');
-                    });
-                    musicToggle.innerHTML = '🎶';
-                    musicToggle.classList.add('playing');
-                } else {
-                    this.audioElement.pause();
-                    musicToggle.innerHTML = '🎵';
-                    musicToggle.classList.remove('playing');
+            // Set up global callback for when API is ready
+            window.onYouTubeIframeAPIReady = () => {
+                this.createYouTubePlayer();
+            };
+        } else {
+            // API already loaded
+            this.createYouTubePlayer();
+        }
+    }
+
+    createYouTubePlayer() {
+        const iframe = document.getElementById('youtube-iframe');
+        if (!iframe) {
+            console.warn('YouTube iframe not found');
+            this.hideMusicToggle();
+            return;
+        }
+
+        try {
+            // Create YouTube player
+            this.youtubePlayer = new YT.Player('youtube-iframe', {
+                events: {
+                    'onReady': (event) => {
+                        console.log('YouTube player ready');
+                        // Player is ready, music toggle is available
+                        this.musicReady = true;
+                        this.updateMusicToggleState();
+                    },
+                    'onStateChange': (event) => {
+                        // Update toggle button state based on player state
+                        this.updateMusicToggleState(event.data);
+                    },
+                    'onError': (error) => {
+                        console.error('YouTube player error:', error);
+                        this.hideMusicToggle();
+                    }
                 }
             });
+        } catch (error) {
+            console.error('Failed to create YouTube player:', error);
+            this.hideMusicToggle();
+        }
+    }
 
-            // Auto-play if enabled
-            if (this.config.love.features.musicAutoplay) {
-                this.audioElement.play().catch(() => {
-                    console.log('Autoplay blocked - user interaction required');
-                });
-            }
+    initializeMusicToggle() {
+        const musicToggle = document.getElementById('musicToggle');
+        if (!musicToggle) {
+            console.warn('Music toggle button not found');
+            return;
+        }
+
+        musicToggle.addEventListener('click', () => {
+            this.toggleMusic();
         });
 
-        // Try to load the audio file
-        this.audioElement.load();
+        // Initially hide until player is ready
+        musicToggle.style.display = 'none';
+        this.musicToggle = musicToggle;
+    }
+
+    toggleMusic() {
+        if (!this.youtubePlayer || !this.musicReady) {
+            console.warn('YouTube player not ready');
+            return;
+        }
+
+        const currentState = this.youtubePlayer.getPlayerState();
+
+        try {
+            if (currentState === YT.PlayerState.PLAYING) {
+                // Pause music
+                this.youtubePlayer.pauseVideo();
+                this.isMusicPlaying = false;
+            } else {
+                // Play music
+                this.youtubePlayer.playVideo();
+                this.isMusicPlaying = true;
+            }
+
+            this.updateMusicToggleState();
+        } catch (error) {
+            console.error('Error toggling music:', error);
+        }
+    }
+
+    updateMusicToggleState(playerState) {
+        if (!this.musicToggle) return;
+
+        // Show toggle button now that player is ready
+        this.musicToggle.style.display = 'flex';
+
+        // Determine if music is playing
+        let isPlaying = false;
+        if (typeof playerState !== 'undefined') {
+            isPlaying = playerState === YT.PlayerState.PLAYING;
+        } else if (this.youtubePlayer) {
+            isPlaying = this.youtubePlayer.getPlayerState() === YT.PlayerState.PLAYING;
+        }
+
+        // Update button appearance and ARIA state
+        const musicIcon = this.musicToggle.querySelector('.music-icon');
+        const srText = this.musicToggle.querySelector('.sr-only');
+
+        if (isPlaying) {
+            if (musicIcon) musicIcon.textContent = '🎶';
+            if (srText) srText.textContent = 'Music: On';
+            this.musicToggle.setAttribute('aria-pressed', 'true');
+            this.musicToggle.classList.add('playing');
+        } else {
+            if (musicIcon) musicIcon.textContent = '🎵';
+            if (srText) srText.textContent = 'Music: Off';
+            this.musicToggle.setAttribute('aria-pressed', 'false');
+            this.musicToggle.classList.remove('playing');
+        }
+    }
+
+    hideMusicToggle() {
+        const musicToggle = document.getElementById('musicToggle');
+        if (musicToggle) {
+            musicToggle.style.display = 'none';
+        }
     }
 
     createFloatingHeart() {

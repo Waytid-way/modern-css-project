@@ -2,79 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Web Design Project</title>
-    <meta name="description" content="A study of modern CSS animations and JavaScript interactions">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Interactive Web Design Project | Modern CSS & JavaScript Study</title>
+    <meta name="description" content="A comprehensive study of modern CSS animations and JavaScript interactions showcasing advanced web development techniques.">
+    <meta name="keywords" content="web design, CSS animations, JavaScript, responsive design, frontend development">
+    <meta name="author" content="Web Developer">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Interactive Web Design Project">
+    <meta property="og:description" content="A study of modern CSS animations and JavaScript interactions">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interactive Web Design Project">
+    <meta name="twitter:description" content="A study of modern CSS animations and JavaScript interactions">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="css/fake-style.css" as="style">
+    <link rel="preload" href="js/config.js" as="script">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/fake-style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Interactive Web Design Project",
+        "description": "A comprehensive study of modern CSS animations and JavaScript interactions",
+        "author": {
+            "@type": "Person",
+            "name": "Web Developer"
+        }
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen" aria-hidden="true">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading project...</p>
+    </div>
+
     <!-- Fake Opening Page -->
-    <div id="fakePage" class="fake-page">
+    <div id="fakePage" class="fake-page" role="main">
         <!-- Navigation -->
-        <header class="header">
-            <nav class="nav">
+        <header class="header" role="banner">
+            <nav class="nav" role="navigation" aria-label="Main navigation">
                 <div class="nav-brand">
                     <h1>WebDev Project</h1>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#features" class="nav-link">Features</a></li>
-                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                <button class="nav-toggle" 
+                        aria-label="Toggle navigation menu" 
+                        aria-expanded="false"
+                        aria-controls="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
+                <ul id="navMenu" class="nav-menu" role="list">
+                    <li role="listitem"><a href="#home" class="nav-link" aria-label="Navigate to home section">Home</a></li>
+                    <li role="listitem"><a href="#about" class="nav-link" aria-label="Navigate to about section">About</a></li>
+                    <li role="listitem"><a href="#features" class="nav-link" aria-label="Navigate to features section">Features</a></li>
+                    <li role="listitem"><a href="#gallery" class="nav-link" aria-label="Navigate to gallery section">Gallery</a></li>
+                    <li role="listitem"><a href="#contact" class="nav-link" aria-label="Navigate to contact section">Contact</a></li>
                 </ul>
-                <div class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </nav>
         </header>
 
         <!-- Hero Section -->
-        <section id="home" class="hero">
+        <section id="home" class="hero" aria-labelledby="hero-title">
             <div class="hero-content">
-                <h1 class="hero-title">Interactive Web Design Project</h1>
+                <h1 id="hero-title" class="hero-title">Interactive Web Design Project</h1>
                 <p class="hero-subtitle">A comprehensive study of modern CSS animations and JavaScript interactions</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" id="secretTrigger">View Demo</button>
-                    <button class="btn btn-secondary">Learn More</button>
+                    <button class="btn btn-primary" 
+                            id="secretTrigger" 
+                            aria-label="View project demonstration"
+                            data-trigger-count="0">
+                        View Demo
+                    </button>
+                    <button class="btn btn-secondary" 
+                            aria-label="Learn more about this project">
+                        Learn More
+                    </button>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-visual" aria-hidden="true">
                 <div class="demo-box">
-                    <div class="demo-element"></div>
+                    <div class="demo-element" role="presentation"></div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about">
+        <section id="about" class="about" aria-labelledby="about-title">
             <div class="container">
-                <h2 class="section-title">About This Project</h2>
+                <h2 id="about-title" class="section-title">About This Project</h2>
                 <div class="about-content">
                     <div class="about-text">
                         <p>This project demonstrates advanced web development techniques including CSS Grid, Flexbox, custom animations, and interactive JavaScript components. The focus is on creating responsive, performant, and accessible web interfaces.</p>
                         <p>Key technologies used: HTML5 semantic markup, CSS3 with custom properties, vanilla JavaScript for interactions, and modern browser APIs for enhanced functionality.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive Design</span>
+                        <div class="tech-stack" role="list" aria-label="Technologies used">
+                            <span class="tech-tag" role="listitem">HTML5</span>
+                            <span class="tech-tag" role="listitem">CSS3</span>
+                            <span class="tech-tag" role="listitem">JavaScript</span>
+                            <span class="tech-tag" role="listitem">Responsive Design</span>
                         </div>
                     </div>
-                    <div class="about-visual">
+                    <div class="about-visual" aria-hidden="true">
                         <div class="code-preview">
                             <div class="code-header">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
+                                <span class="dot red" role="presentation"></span>
+                                <span class="dot yellow" role="presentation"></span>
+                                <span class="dot green" role="presentation"></span>
                             </div>
                             <div class="code-content">
-                                <pre><code>/* Modern CSS Animation */
+                                <pre aria-label="CSS animation code example"><code>/* Modern CSS Animation */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -91,84 +162,126 @@
         </section>
 
         <!-- Features Section -->
-        <section id="features" class="features">
+        <section id="features" class="features" aria-labelledby="features-title">
             <div class="container">
-                <h2 class="section-title">Key Features</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🎨</div>
+                <h2 id="features-title" class="section-title">Key Features</h2>
+                <div class="features-grid" role="list">
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">🎨</div>
                         <h3>Modern CSS Animations</h3>
                         <p>Smooth 60fps animations using CSS transforms and transitions for optimal performance.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">📱</div>
                         <h3>Responsive Design</h3>
                         <p>Mobile-first approach with breakpoints for all device sizes from 320px to 1440px.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">⚡</div>
                         <h3>Performance Optimized</h3>
                         <p>Lazy loading, minified assets, and optimized animations for fast load times.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">♿</div>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">♿</div>
                         <h3>Accessibility</h3>
                         <p>ARIA labels, keyboard navigation, and focus states for inclusive design.</p>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- Gallery Section -->
-        <section id="gallery" class="gallery">
+        <section id="gallery" class="gallery" aria-labelledby="gallery-title">
             <div class="container">
-                <h2 class="section-title">Project Gallery</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">Animation Demo</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">Responsive Layout</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">Interactive Components</div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">Performance Metrics</div>
-                    </div>
+                <h2 id="gallery-title" class="section-title">Project Gallery</h2>
+                <div class="gallery-grid" role="list">
+                    <figure class="gallery-item" role="listitem">
+                        <div class="gallery-placeholder" role="img" aria-label="Animation demonstration preview">
+                            <span>Animation Demo</span>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item" role="listitem">
+                        <div class="gallery-placeholder" role="img" aria-label="Responsive layout preview">
+                            <span>Responsive Layout</span>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item" role="listitem">
+                        <div class="gallery-placeholder" role="img" aria-label="Interactive components preview">
+                            <span>Interactive Components</span>
+                        </div>
+                    </figure>
+                    <figure class="gallery-item" role="listitem">
+                        <div class="gallery-placeholder" role="img" aria-label="Performance metrics preview">
+                            <span>Performance Metrics</span>
+                        </div>
+                    </figure>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact">
+        <section id="contact" class="contact" aria-labelledby="contact-title">
             <div class="container">
-                <h2 class="section-title">Contact</h2>
+                <h2 id="contact-title" class="section-title">Contact</h2>
                 <div class="contact-content">
                     <div class="contact-info">
                         <h3>Project Information</h3>
                         <p>This is a demonstration project showcasing modern web development capabilities.</p>
-                        <div class="contact-details">
-                            <p><strong>Author:</strong> Web Developer</p>
-                            <p><strong>Version:</strong> 1.0.0</p>
-                            <p><strong>Last Updated:</strong> 2024</p>
-                        </div>
+                        <dl class="contact-details">
+                            <dt>Author:</dt>
+                            <dd>Web Developer</dd>
+                            <dt>Version:</dt>
+                            <dd>1.0.0</dd>
+                            <dt>Last Updated:</dt>
+                            <dd><time datetime="2024-01-01">2024</time></dd>
+                        </dl>
                     </div>
                     <div class="contact-form">
-                        <form id="contactForm">
+                        <form id="contactForm" 
+                              novalidate 
+                              aria-labelledby="contact-title">
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
+                                <label for="name">Name <span aria-label="required">*</span></label>
+                                <input type="text" 
+                                       id="name" 
+                                       name="name" 
+                                       required 
+                                       aria-required="true"
+                                       aria-describedby="name-error"
+                                       autocomplete="name">
+                                <span id="name-error" class="error-message" role="alert"></span>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
+                                <label for="email">Email <span aria-label="required">*</span></label>
+                                <input type="email" 
+                                       id="email" 
+                                       name="email" 
+                                       required 
+                                       aria-required="true"
+                                       aria-describedby="email-error"
+                                       autocomplete="email">
+                                <span id="email-error" class="error-message" role="alert"></span>
                             </div>
                             <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="4" required></textarea>
+                                <label for="message">Message <span aria-label="required">*</span></label>
+                                <textarea id="message" 
+                                          name="message" 
+                                          rows="4" 
+                                          required 
+                                          aria-required="true"
+                                          aria-describedby="message-error"></textarea>
+                                <span id="message-error" class="error-message" role="alert"></span>
                             </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <button type="submit" 
+                                    class="btn btn-primary" 
+                                    aria-label="Submit contact form">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loader" aria-hidden="true"></span>
+                            </button>
+                            <div id="form-status" 
+                                 class="form-status" 
+                                 role="status" 
+                                 aria-live="polite"></div>
                         </form>
                     </div>
                 </div>
@@ -176,41 +289,102 @@
         </section>
 
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="footer" role="contentinfo">
             <div class="container">
-                <p>&copy; 2024 Interactive Web Design Project. Educational purposes only.</p>
+                <p>&copy; <span id="currentYear">2024</span> Interactive Web Design Project. Educational purposes only.</p>
             </div>
         </footer>
     </div>
 
     <!-- Real Love Website (Initially Hidden) -->
-    <div id="lovePage" class="love-page hidden">
-        <!-- Love content will be dynamically loaded here -->
+    <div id="lovePage" class="love-page hidden" role="main" aria-hidden="true">
         <div class="love-container">
-            <div class="love-header">
+            <!-- YouTube Background Music Player -->
+            <div id="youtube-player" class="youtube-player" aria-label="Background music player">
+                <iframe id="youtube-iframe" 
+                        width="0" 
+                        height="0"
+                        src="https://www.youtube.com/embed/58hyEfGMy6w?enablejsapi=1&autoplay=0&mute=1&loop=1&playlist=58hyEfGMy6w&controls=0"
+                        title="Background romantic music"
+                        allow="autoplay; encrypted-media"
+                        loading="lazy">
+                </iframe>
+            </div>
+
+            <!-- Music Control Button -->
+            <button id="musicToggle" 
+                    class="music-toggle" 
+                    aria-label="Toggle background music"
+                    aria-pressed="false">
+                <span class="music-icon" aria-hidden="true">🎵</span>
+                <span class="sr-only">Music: Off</span>
+            </button>
+
+            <header class="love-header">
                 <h1 class="love-title">For My Love</h1>
                 <p class="love-subtitle">You light up my world ✨</p>
-            </div>
+            </header>
             
             <!-- Love Features Container -->
-            <div id="loveFeatures">
+            <div id="loveFeatures" aria-live="polite">
                 <!-- Content will be populated by JavaScript -->
+                <div class="love-loading" aria-hidden="false">
+                    <div class="heart-pulse" aria-label="Loading romantic content">❤️</div>
+                    <p>Preparing something special...</p>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Transition Overlay -->
-    <div id="transitionOverlay" class="transition-overlay hidden">
+    <div id="transitionOverlay" 
+         class="transition-overlay hidden" 
+         role="dialog" 
+         aria-modal="true"
+         aria-labelledby="transition-title"
+         aria-hidden="true">
         <div class="transition-content">
-            <div class="heart-animation">❤️</div>
-            <p class="transition-text">Loading something special...</p>
+            <div class="heart-animation" aria-hidden="true">
+                <span class="heart-burst">❤️</span>
+                <span class="heart-burst">💕</span>
+                <span class="heart-burst">💖</span>
+            </div>
+            <p id="transition-title" class="transition-text">Loading something special...</p>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="js/config.js"></script>
-    <script src="js/transition.js"></script>
-    <script src="js/love-features.js"></script>
-    <script src="js/performance.js"></script>
+    <!-- Error Boundary -->
+    <div id="errorBoundary" class="error-boundary hidden" role="alert">
+        <div class="error-content">
+            <h2>Oops! Something went wrong</h2>
+            <p>Please refresh the page and try again.</p>
+            <button class="btn btn-primary" onclick="location.reload()">Refresh Page</button>
+        </div>
+    </div>
+
+    <!-- Scripts with proper loading strategy -->
+    <script>
+        // Update current year automatically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Basic error handling
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e);
+            // Could show error boundary here
+        });
+    </script>
+    
+    <script src="js/config.js" defer></script>
+    <script src="js/form-validation.js" defer></script>
+    <script src="js/transition.js" defer></script>
+    <script src="js/love-features.js" defer></script>
+    <script src="js/performance.js" defer></script>
+    
+    <!-- Fallback for no JavaScript -->
+    <noscript>
+        <div class="noscript-warning">
+            <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+        </div>
+    </noscript>
 </body>
 </html>

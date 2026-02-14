@@ -12,6 +12,124 @@ class TransitionManager {
     init() {
         this.setupEventListeners();
         this.setupMobileMenu();
+        this.setupAccessibility();
+        this.setupErrorHandling();
+        this.hideLoadingScreen();
+    }
+
+    setupAccessibility() {
+        // Update navigation toggle ARIA attributes
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (navToggle && navMenu) {
+            // Set initial ARIA state
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-controls', 'navMenu');
+
+            // Update ARIA on toggle
+            const originalToggle = navToggle.onclick || (() => {});
+            navToggle.addEventListener('click', () => {
+                const isExpanded = navMenu.classList.contains('active');
+                navToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
+
+        // Add keyboard navigation for secret trigger
+        const secretTrigger = document.getElementById('secretTrigger');
+        if (secretTrigger) {
+            secretTrigger.setAttribute('tabindex', '0');
+            secretTrigger.setAttribute('role', 'button');
+            secretTrigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    secretTrigger.click();
+                }
+            });
+        }
+
+        // Add escape key handler for overlays
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.handleEscapeKey();
+            }
+        });
+    }
+
+    setupErrorHandling() {
+        // Global error handler
+        window.addEventListener('error', (e) => {
+            console.error('Global error:', e);
+            this.showErrorBoundary('An unexpected error occurred. Please refresh the page.');
+        });
+
+        // Unhandled promise rejection handler
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled promise rejection:', e);
+            this.showErrorBoundary('Something went wrong. Please refresh the page.');
+        });
+    }
+
+    handleEscapeKey() {
+        // Close any open overlays or modals
+        const transitionOverlay = document.getElementById('transitionOverlay');
+        if (transitionOverlay && !transitionOverlay.classList.contains('hidden')) {
+            // Don't close transition overlay during transition
+            if (!this.isTransitioning) {
+                this.hideTransitionOverlay();
+            }
+        }
+
+        // Close mobile menu if open
+        const navMenu = document.querySelector('.nav-menu');
+        const navToggle = document.querySelector('.nav-toggle');
+        if (navMenu && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    hideLoadingScreen() {
+        // Hide loading screen with animation
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('loaded');
+
+                // Remove from DOM after animation
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 300);
+            }
+
+            // Announce page ready to screen readers
+            this.announceToScreenReader('Page loaded successfully');
+        }, 500);
+    }
+
+    announceToScreenReader(message) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'assertive');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'sr-only';
+        announcement.textContent = message;
+        document.body.appendChild(announcement);
+
+        setTimeout(() => {
+            document.body.removeChild(announcement);
+        }, 1000);
+    }
+
+    showErrorBoundary(message) {
+        const errorBoundary = document.getElementById('errorBoundary');
+        if (errorBoundary) {
+            errorBoundary.classList.remove('hidden');
+            const errorContent = errorBoundary.querySelector('.error-content h2');
+            if (errorContent) {
+                errorContent.textContent = message;
+            }
+        }
     }
 
     setupEventListeners() {
