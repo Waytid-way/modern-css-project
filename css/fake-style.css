@@ -524,6 +524,10 @@ p {
 }
 
 /* Transition Overlay */
+.transition-overlay.hidden {
+    display: none !important;
+}
+
 .transition-overlay {
     position: fixed;
     top: 0;
