@@ -375,6 +375,9 @@ class PerformanceManager {
 
     // Service Worker registration for offline support
     registerServiceWorker() {
+        // Service worker disabled - file not available
+        // To enable, create sw.js file and uncomment below:
+        /*
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
                 .then(registration => {
@@ -384,6 +387,7 @@ class PerformanceManager {
                     console.log('SW registration failed: ', registrationError);
                 });
         }
+        */
     }
 
     // Cleanup method
