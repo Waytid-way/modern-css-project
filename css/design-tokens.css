@@ -1,0 +1,283 @@
+/* Design Tokens - CSS Custom Properties
+ * Extracted from design mockups in design-reference/
+ * Purple-Pink Theme with Glassmorphism
+ */
+
+:root {
+  /* ========== COLORS ========== */
+  
+  /* Primary Brand Colors */
+  --color-purple: #8B5CF6;
+  --color-purple-dark: #7C3AED;
+  --color-pink: #EC4899;
+  --color-pink-light: #F472B6;
+  
+  /* Background Colors */
+  --color-bg-dark: #0F0F1E;
+  --color-bg-darker: #0A0A14;
+  --color-bg-card: rgba(255, 255, 255, 0.05);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.08);
+  --color-bg-input: rgba(255, 255, 255, 0.03);
+  
+  /* Text Colors */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-text-tertiary: rgba(255, 255, 255, 0.4);
+  
+  /* Border Colors */
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-focus: var(--color-pink);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+  
+  /* Gradient Definitions */
+  --gradient-primary: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+  --gradient-vertical: linear-gradient(180deg, #8B5CF6 0%, #EC4899 100%);
+  --gradient-horizontal: linear-gradient(90deg, #8B5CF6 0%, #EC4899 100%);
+  --gradient-radial: radial-gradient(circle, #8B5CF6 0%, #EC4899 100%);
+  --gradient-glow: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+  
+  /* ========== TYPOGRAPHY ========== */
+  
+  /* Font Families */
+  --font-display: 'Great Vibes', cursive;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Font Sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+  --text-4xl: 48px;
+  --text-5xl: 64px;
+  
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  
+  /* Letter Spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  
+  /* ========== SPACING ========== */
+  
+  /* Base Spacing Scale */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  
+  /* Aliases for easier reading */
+  --space-xs: var(--space-1);
+  --space-sm: var(--space-2);
+  --space-md: var(--space-4);
+  --space-lg: var(--space-6);
+  --space-xl: var(--space-8);
+  --space-2xl: var(--space-12);
+  
+  /* Component Spacing */
+  --card-padding: 24px;
+  --section-padding: 32px;
+  --container-gap: 24px;
+  
+  /* ========== SIZING ========== */
+  
+  /* Container Widths */
+  --container-max: 800px;
+  --container-sm: 400px;
+  --container-lg: 1000px;
+  
+  /* Component Sizes */
+  --header-height: 80px;
+  --button-height: 48px;
+  --input-height: 44px;
+  --icon-size-sm: 20px;
+  --icon-size-md: 32px;
+  --icon-size-lg: 48px;
+  
+  /* Card Sizes */
+  --card-max-width: 500px;
+  --card-min-width: 280px;
+  
+  /* ========== BORDER RADIUS ========== */
+  
+  --radius-none: 0;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+  
+  /* ========== SHADOWS ========== */
+  
+  --shadow-none: none;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.4);
+  --shadow-2xl: 0 16px 32px rgba(0, 0, 0, 0.5);
+  
+  /* Glow Shadows */
+  --shadow-glow-sm: 0 0 10px rgba(236, 72, 153, 0.3);
+  --shadow-glow-md: 0 0 20px rgba(236, 72, 153, 0.5);
+  --shadow-glow-lg: 0 0 30px rgba(236, 72, 153, 0.6);
+  
+  /* Card Shadow */
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
+  
+  /* ========== GLASSMORPHISM ========== */
+  
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(255, 255, 255, 0.2);
+  --glass-blur: 10px;
+  --glass-blur-strong: 20px;
+  
+  /* ========== TRANSITIONS ========== */
+  
+  /* Timing Functions */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Durations */
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 700ms;
+  
+  /* Combined */
+  --transition-fast: all var(--duration-fast) var(--ease-out);
+  --transition-base: all var(--duration-normal) var(--ease-out);
+  --transition-slow: all var(--duration-slow) var(--ease-out);
+  
+  /* Transform Transitions */
+  --transition-transform: transform var(--duration-normal) var(--ease-out);
+  --transition-opacity: opacity var(--duration-normal) var(--ease-out);
+  
+  /* ========== Z-INDEX ========== */
+  
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal-backdrop: 998;
+  --z-modal: 999;
+  --z-tooltip: 1000;
+  --z-toast: 1100;
+  
+  /* ========== ANIMATION ========== */
+  
+  /* Animation Durations */
+  --animate-fast: 0.3s;
+  --animate-normal: 0.5s;
+  --animate-slow: 0.8s;
+  
+  /* Keyframe References */
+  --animate-fade-in: fadeIn var(--animate-normal) var(--ease-out);
+  --animate-fade-in-up: fadeInUp var(--animate-normal) var(--ease-out);
+  --animate-scale-in: scaleIn var(--animate-normal) var(--ease-spring);
+  --animate-pulse: pulse 2s var(--ease-in-out) infinite;
+  --animate-float: float 3s var(--ease-in-out) infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  
+  /* ========== BREAKPOINTS ========== */
+  
+  --breakpoint-mobile: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1440px;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  :root {
+    /* Typography Scale Down */
+    --text-5xl: 48px;
+    --text-4xl: 36px;
+    --text-3xl: 28px;
+    --text-2xl: 22px;
+    
+    /* Spacing Scale Down */
+    --card-padding: 20px;
+    --section-padding: 24px;
+    
+    /* Component Sizes */
+    --icon-size-lg: 40px;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  :root {
+    /* Typography */
+    --text-5xl: 36px;
+    --text-4xl: 28px;
+    --text-3xl: 24px;
+    --text-2xl: 20px;
+    --text-xl: 18px;
+    
+    /* Spacing */
+    --space-6: 20px;
+    --space-8: 24px;
+    --space-12: 32px;
+    --card-padding: 16px;
+    --section-padding: 20px;
+    
+    /* Container */
+    --container-max: 100%;
+  }
+}
+
+/* ========== REDUCED MOTION ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --transition-fast: none;
+    --transition-base: none;
+    --transition-slow: none;
+  }
+}
+
+/* ========== DARK MODE (Default is already dark) ========== */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Light mode overrides if needed */
+    --color-bg-dark: #f8f9fa;
+    --color-bg-card: rgba(0, 0, 0, 0.03);
+    --color-text-primary: #1a1a2e;
+    --color-text-secondary: rgba(26, 26, 46, 0.7);
+    --color-border: rgba(0, 0, 0, 0.1);
+  }
+}

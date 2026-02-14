@@ -37,7 +37,17 @@
     <link rel="preload" href="css/fake-style.css" as="style">
     <link rel="preload" href="js/config.js" as="script">
     
-    <!-- Stylesheets -->
+    <!-- Component Stylesheets -->
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/components/base.css">
+    <link rel="stylesheet" href="css/components/hero.css">
+    <link rel="stylesheet" href="css/components/kiss-counter.css">
+    <link rel="stylesheet" href="css/components/love-meter.css">
+    <link rel="stylesheet" href="css/components/countdown.css">
+    <link rel="stylesheet" href="css/components/music-player.css">
+    <link rel="stylesheet" href="css/components/game-cards.css">
+    
+    <!-- Core Stylesheets -->
     <link rel="stylesheet" href="css/fake-style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -325,13 +335,9 @@
                 <p class="love-subtitle">You light up my world ✨</p>
             </header>
             
-            <!-- Love Features Container -->
+            <!-- Love Features Container - Components loaded dynamically -->
             <div id="loveFeatures" aria-live="polite">
-                <!-- Content will be populated by JavaScript -->
-                <div class="love-loading" aria-hidden="false">
-                    <div class="heart-pulse" aria-label="Loading romantic content">❤️</div>
-                    <p>Preparing something special...</p>
-                </div>
+                <!-- Components will be loaded here by component-loader.js -->
             </div>
         </div>
     </div>
@@ -374,6 +380,15 @@
         });
     </script>
     
+    <!-- Component JavaScript -->
+    <script src="js/component-loader.js" defer></script>
+    <script src="js/components/kiss-counter.js" defer></script>
+    <script src="js/components/love-meter.js" defer></script>
+    <script src="js/components/countdown.js" defer></script>
+    <script src="js/components/music-player.js" defer></script>
+    <script src="js/components/game-cards.js" defer></script>
+    
+    <!-- Core JavaScript -->
     <script src="js/config.js" defer></script>
     <script src="js/heart-animations.js" defer></script>
     <script src="js/form-validation.js" defer></script>

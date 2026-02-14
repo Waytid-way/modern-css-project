@@ -1,0 +1,209 @@
+/* Love Meter Component Styles */
+
+.meter-section {
+  padding: var(--space-12) var(--space-4);
+}
+
+.meter-card {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.meter-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-3);
+}
+
+.meter-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-8);
+}
+
+/* Emoji Scale */
+.meter-emoji-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  padding: 0 var(--space-2);
+}
+
+.meter-emoji-scale .emoji {
+  font-size: 32px;
+  opacity: 0.4;
+  transition: var(--transition-base);
+  cursor: default;
+  filter: grayscale(0.3);
+}
+
+.meter-emoji-scale .emoji.active {
+  opacity: 1;
+  transform: scale(1.3);
+  filter: grayscale(0);
+  animation: emojiBounce 0.5s ease;
+}
+
+@keyframes emojiBounce {
+  0%, 100% { transform: scale(1.3); }
+  50% { transform: scale(1.5); }
+}
+
+/* Range Slider */
+.meter-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-card);
+  outline: none;
+  margin-bottom: var(--space-6);
+  cursor: pointer;
+}
+
+.meter-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-glow-md);
+  transition: var(--transition-fast);
+  border: 2px solid white;
+}
+
+.meter-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: var(--shadow-glow-lg);
+}
+
+.meter-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: var(--shadow-glow-md);
+}
+
+/* Slider track fill effect */
+.meter-slider::-webkit-slider-runnable-track {
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(to right, 
+    var(--color-purple) 0%, 
+    var(--color-pink) var(--value, 50%), 
+    var(--color-bg-card) var(--value, 50%)
+  );
+}
+
+/* Value Display */
+.meter-value {
+  font-size: 48px;
+  font-weight: var(--font-bold);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-4);
+  line-height: 1;
+  transition: var(--transition-base);
+}
+
+.meter-value:hover {
+  transform: scale(1.05);
+}
+
+/* Message */
+.meter-message {
+  color: var(--color-text-secondary);
+  font-size: var(--text-lg);
+  font-style: italic;
+  min-height: 28px;
+  transition: var(--transition-base);
+}
+
+.meter-message.update {
+  animation: messageUpdate 0.3s ease;
+}
+
+@keyframes messageUpdate {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Love level indicators */
+.love-level-low { color: #60A5FA; }
+.love-level-medium { color: #A78BFA; }
+.love-level-high { color: var(--color-pink); }
+.love-level-max { 
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 480px) {
+  .meter-card {
+    padding: var(--space-6);
+  }
+  
+  .meter-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .meter-emoji-scale .emoji {
+    font-size: 24px;
+  }
+  
+  .meter-value {
+    font-size: 36px;
+  }
+  
+  .meter-message {
+    font-size: var(--text-base);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .meter-emoji-scale .emoji,
+  .meter-value,
+  .meter-message {
+    transition: none;
+    animation: none;
+  }
+  
+  .meter-emoji-scale .emoji.active {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .meter-slider::-webkit-slider-thumb {
+    border: 3px solid white;
+  }
+  
+  .meter-emoji-scale .emoji {
+    opacity: 0.7;
+  }
+  
+  .meter-emoji-scale .emoji.active {
+    opacity: 1;
+    text-shadow: 0 0 10px currentColor;
+  }
+}

@@ -1,0 +1,225 @@
+/* Kiss Counter Component Styles */
+
+.kiss-section {
+  padding: var(--space-12) var(--space-4);
+}
+
+.kiss-card {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.kiss-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.kiss-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+/* Kiss Button */
+.kiss-button {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-sm);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.kiss-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.kiss-button:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-xl), var(--shadow-glow-md);
+}
+
+.kiss-button:active {
+  transform: scale(0.95);
+}
+
+.kiss-button:active::before {
+  opacity: 1;
+}
+
+.kiss-button.pressed {
+  animation: kissPress 0.3s ease;
+}
+
+.kiss-icon {
+  font-size: 48px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+@keyframes kissPress {
+  0% { transform: scale(1); }
+  40% { transform: scale(0.85); }
+  100% { transform: scale(1); }
+}
+
+/* Kiss Count */
+.kiss-count {
+  font-size: 28px;
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  min-height: 36px;
+}
+
+/* Progress Bar */
+.kiss-progress {
+  width: 100%;
+  height: 10px;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+}
+
+.kiss-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.kiss-progress-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Milestones */
+.kiss-milestones {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--space-2);
+}
+
+.milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  transition: var(--transition-base);
+}
+
+.milestone-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: var(--transition-base);
+}
+
+.milestone.achieved .milestone-icon {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  box-shadow: var(--shadow-glow-sm);
+  animation: milestoneAchieved 0.5s ease;
+}
+
+.milestone-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--font-medium);
+}
+
+.milestone.achieved .milestone-label {
+  color: var(--color-pink);
+  font-weight: var(--font-semibold);
+}
+
+@keyframes milestoneAchieved {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 480px) {
+  .kiss-card {
+    padding: var(--space-6);
+  }
+  
+  .kiss-button {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .kiss-icon {
+    font-size: 40px;
+  }
+  
+  .kiss-count {
+    font-size: 24px;
+  }
+  
+  .milestone-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .milestone-label {
+    font-size: 10px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .kiss-button,
+  .kiss-progress-bar,
+  .milestone-icon {
+    transition: none;
+  }
+  
+  .kiss-button.pressed {
+    animation: none;
+  }
+  
+  .kiss-progress-bar::after {
+    animation: none;
+  }
+  
+  .milestone.achieved .milestone-icon {
+    animation: none;
+  }
+}

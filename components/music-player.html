@@ -1,0 +1,58 @@
+<!-- Music Player Component -->
+<section class="music-section" id="musicSection">
+  <div class="container">
+    <div class="music-card card">
+      <div class="music-album-art">
+        <div class="album-disc" id="albumDisc">
+          <span class="album-icon">🎵</span>
+          <div class="album-center"></div>
+        </div>
+      </div>
+      
+      <div class="music-info">
+        <h3 class="music-title" id="musicTitle">Perfect</h3>
+        <p class="music-artist" id="musicArtist">Ed Sheeran</p>
+      </div>
+      
+      <div class="music-controls">
+        <button class="music-btn" id="prevBtn" aria-label="Previous song">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+          </svg>
+        </button>
+        
+        <button class="music-btn play-btn" id="playBtn" aria-label="Play or pause">
+          <svg class="play-icon" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg class="pause-icon hidden" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+        
+        <button class="music-btn" id="nextBtn" aria-label="Next song">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="music-progress">
+        <span class="time-current" id="currentTime">0:00</span>
+        <div class="progress-track" id="progressTrack">
+          <div class="progress-fill" id="musicProgress"></div>
+          <div class="progress-handle"></div>
+        </div>
+        <span class="time-total" id="totalTime">4:23</span>
+      </div>
+      
+      <div class="music-wave" id="musicWave">
+        <span class="wave-bar"></span>
+        <span class="wave-bar"></span>
+        <span class="wave-bar"></span>
+        <span class="wave-bar"></span>
+        <span class="wave-bar"></span>
+      </div>
+    </div>
+  </div>
+</section>

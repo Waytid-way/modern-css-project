@@ -1,0 +1,31 @@
+<!-- Love Meter Component -->
+<section class="meter-section" id="meterSection">
+  <div class="container">
+    <div class="meter-card card">
+      <h2 class="meter-title gradient-text">Love Meter</h2>
+      <p class="meter-subtitle">How much do you love me today?</p>
+      
+      <div class="meter-emoji-scale">
+        <span class="emoji" data-value="0">😢</span>
+        <span class="emoji" data-value="25">😐</span>
+        <span class="emoji" data-value="50">🙂</span>
+        <span class="emoji" data-value="75">😍</span>
+        <span class="emoji" data-value="100">🤩</span>
+      </div>
+      
+      <input 
+        type="range" 
+        class="meter-slider" 
+        id="loveSlider" 
+        min="0" 
+        max="100" 
+        value="50"
+        aria-label="Love level"
+      >
+      
+      <div class="meter-value" id="meterValue">50%</div>
+      
+      <p class="meter-message" id="meterMessage">You make my heart skip a beat! 💓</p>
+    </div>
+  </div>
+</section>

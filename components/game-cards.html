@@ -1,0 +1,43 @@
+<!-- Game Cards Component -->
+<section class="games-section" id="gamesSection">
+  <div class="container">
+    <h2 class="games-title gradient-text">Fun & Games</h2>
+    
+    <div class="games-grid">
+      <!-- Love Trivia Card -->
+      <div class="game-card card" data-game="trivia">
+        <div class="game-icon">❓</div>
+        <h3 class="game-title">Love Trivia</h3>
+        <p class="game-desc">Test how well you know me with fun questions!</p>
+        <button class="game-btn btn-primary" data-action="open-trivia">Play Now</button>
+      </div>
+      
+      <!-- Memory Match Card -->
+      <div class="game-card card" data-game="memory">
+        <div class="game-icon">🧩</div>
+        <h3 class="game-title">Memory Match</h3>
+        <p class="game-desc">Match the love-themed cards together.</p>
+        <button class="game-btn btn-primary" data-action="open-memory">Play Now</button>
+      </div>
+      
+      <!-- Love Calculator Card -->
+      <div class="game-card card" data-game="calculator">
+        <div class="game-icon">💕</div>
+        <h3 class="game-title">Love Calculator</h3>
+        <p class="game-desc">Calculate our love compatibility score.</p>
+        <button class="game-btn btn-primary" data-action="open-calculator">Play Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Game Modal (Hidden by default) -->
+<div class="game-modal hidden" id="gameModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-overlay"></div>
+  <div class="modal-content card">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-body" id="modalBody">
+      <!-- Game content loaded dynamically -->
+    </div>
+  </div>
+</div>
