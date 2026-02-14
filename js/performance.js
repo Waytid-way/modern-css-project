@@ -415,8 +415,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Optimize font loading
     performanceManager.optimizeFontLoading();
     
-    // Register service worker
-    performanceManager.registerServiceWorker();
+    // Service worker disabled - sw.js file not available
+    // performanceManager.registerServiceWorker();
 });
 
 // Export for use in other modules
