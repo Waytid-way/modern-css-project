@@ -40,6 +40,7 @@
     <!-- Component Stylesheets -->
     <link rel="stylesheet" href="css/design-tokens.css">
     <link rel="stylesheet" href="css/components/base.css">
+    <link rel="stylesheet" href="css/components/modal.css">
     <link rel="stylesheet" href="css/components/hero.css">
     <link rel="stylesheet" href="css/components/kiss-counter.css">
     <link rel="stylesheet" href="css/components/love-meter.css">
@@ -368,6 +369,12 @@
         </div>
     </div>
 
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading love... 💕</p>
+    </div>
+
     <!-- Scripts with proper loading strategy -->
     <script>
         // Update current year automatically
@@ -380,8 +387,13 @@
         });
     </script>
     
+    <!-- Utility JavaScript -->
+    <script src="js/utils/storage.js" defer></script>
+    <script src="js/utils/performance.js" defer></script>
+    
     <!-- Component JavaScript -->
     <script src="js/component-loader.js" defer></script>
+    <script src="js/components/modal.js" defer></script>
     <script src="js/components/kiss-counter.js" defer></script>
     <script src="js/components/love-meter.js" defer></script>
     <script src="js/components/countdown.js" defer></script>
