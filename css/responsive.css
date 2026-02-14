@@ -528,7 +528,12 @@
     .hero-buttons,
     .floating-heart,
     .sparkle,
-    .transition-overlay {
+    .transition-overlay,
+    .floating-hearts-container,
+    .heart-burst-container,
+    .heart-rain-container,
+    .love-explosion-container,
+    .heart-trail {
         display: none !important;
     }
     
@@ -559,7 +564,19 @@
 @media (prefers-reduced-motion: reduce) {
     .floating-heart,
     .sparkle,
-    .heart-burst {
+    .heart-burst,
+    .floating-hearts-container,
+    .heart-burst-container,
+    .heart-rain-container,
+    .heart-rain,
+    .heart-glow,
+    .heart-bounce,
+    .heart-spin,
+    .love-particle,
+    .heart-trail,
+    .sparkle-heart,
+    .heart-wave,
+    .transition-heart {
         animation: none;
     }
     
@@ -580,7 +597,13 @@
 /* Performance Optimizations for Mobile */
 @media (max-width: 767px) {
     .floating-heart,
-    .sparkle {
+    .sparkle,
+    .floating-hearts-container,
+    .heart-burst-container,
+    .heart-rain-container,
+    .heart-rain,
+    .love-explosion-container,
+    .heart-trail {
         display: none; /* Disable particles on low-end mobile */
     }
     

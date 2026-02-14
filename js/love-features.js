@@ -619,20 +619,29 @@ class LoveFeatures {
     }
 
     createFloatingHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'floating-heart';
-        heart.textContent = '❤️';
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
-        heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-        
-        document.body.appendChild(heart);
-        
-        setTimeout(() => {
-            if (document.body.contains(heart)) {
-                document.body.removeChild(heart);
-            }
-        }, 8000);
+        // Use PNG heart animations instead of text hearts
+        if (window.HeartAnimations) {
+            // Create a trail heart at random position
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            window.HeartAnimations.createTrailHeart(x, y, 'pink');
+        } else {
+            // Fallback to text-based hearts if PNG animations not available
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                if (document.body.contains(heart)) {
+                    document.body.removeChild(heart);
+                }
+            }, 8000);
+        }
     }
 
     cleanup() {

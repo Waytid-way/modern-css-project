@@ -1,388 +1,496 @@
-/* Animations for Love Website Generator */
+/* ==========================================
+   HEART ANIMATIONS - PNG IMAGE VERSION
+   Performance optimized for 60fps
+   ========================================== */
 
-/* Heart Animations */
+/* Base heart styling for PNG */
+.heart {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  will-change: transform;
+}
+
+.heart img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================
+   1. FLOATING HEARTS - Background Animation
+   ========================================== */
 @keyframes floatUp {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(var(--float-x, 0)) scale(1);
+    opacity: 0;
+  }
 }
 
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.1); }
-    45% { transform: scale(0.9); }
-    65% { transform: scale(1.05); }
-    85% { transform: scale(0.95); }
+.floating-hearts-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.8; }
-}
-
-@keyframes heartBurst {
-    0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 1;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.5);
-        opacity: 0.8;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(2);
-        opacity: 0;
-    }
-}
-
-/* Sparkle Animations */
-@keyframes sparkle {
-    0%, 100% {
-        transform: scale(0) rotate(0deg);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1) rotate(180deg);
-        opacity: 1;
-    }
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-}
-
-/* Transition Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-@keyframes slideInUp {
-    from {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInDown {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes bounce {
-    0%, 20%, 53%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40%, 43% {
-        transform: translateY(-30px);
-    }
-    70% {
-        transform: translateY(-15px);
-    }
-    90% {
-        transform: translateY(-4px);
-    }
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-    20%, 40%, 60%, 80% { transform: translateX(10px); }
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes wiggle {
-    0%, 7% { transform: rotateZ(0); }
-    15% { transform: rotateZ(-15deg); }
-    20% { transform: rotateZ(10deg); }
-    25% { transform: rotateZ(-10deg); }
-    30% { transform: rotateZ(6deg); }
-    35% { transform: rotateZ(-4deg); }
-    40%, 100% { transform: rotateZ(0); }
-}
-
-/* Background Gradient Animation */
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Text Animations */
-@keyframes typewriter {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink {
-    50% { border-color: transparent; }
-}
-
-@keyframes glow {
-    0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
-    50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8); }
-}
-
-/* Loading Animations */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.7; }
-}
-
-/* Particle Animations */
-@keyframes particleFloat {
-    0% {
-        transform: translateY(100vh) translateX(0) scale(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-        transform: translateY(90vh) translateX(10px) scale(1);
-    }
-    90% {
-        opacity: 1;
-        transform: translateY(10vh) translateX(-10px) scale(1);
-    }
-    100% {
-        transform: translateY(0) translateX(0) scale(0);
-        opacity: 0;
-    }
-}
-
-/* Love Meter Animation */
-@keyframes loveMeterFill {
-    from { width: 0%; }
-    to { width: 100%; }
-}
-
-@keyframes loveMeterGlow {
-    0%, 100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8); }
-}
-
-/* Memory Card Animations */
-@keyframes cardFlip {
-    0% { transform: rotateY(0); }
-    100% { transform: rotateY(180deg); }
-}
-
-@keyframes cardHover {
-    0% { transform: translateY(0) scale(1); }
-    100% { transform: translateY(-10px) scale(1.05); }
-}
-
-/* Button Animations */
-@keyframes buttonPress {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.95); }
-    100% { transform: scale(1); }
-}
-
-@keyframes buttonShine {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-}
-
-/* Countdown Animation */
-@keyframes countdownPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-/* Photo Carousel Animations */
-@keyframes slideIn {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-}
-
-@keyframes slideOut {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
-}
-
-/* Utility Animation Classes */
-.animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
-.animate-fade-out { animation: fadeOut 0.5s ease-in-out; }
-.animate-slide-in-up { animation: slideInUp 0.6s ease-out; }
-.animate-slide-in-down { animation: slideInDown 0.6s ease-out; }
-.animate-slide-in-left { animation: slideInLeft 0.6s ease-out; }
-.animate-slide-in-right { animation: slideInRight 0.6s ease-out; }
-.animate-scale-in { animation: scaleIn 0.5s ease-out; }
-.animate-bounce { animation: bounce 1s ease-in-out; }
-.animate-shake { animation: shake 0.5s ease-in-out; }
-.animate-rotate { animation: rotate 2s linear infinite; }
-.animate-wiggle { animation: wiggle 0.5s ease-in-out; }
-.animate-pulse { animation: pulse 2s ease-in-out infinite; }
-.animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
-
-/* Delay Classes */
-.animate-delay-1 { animation-delay: 0.1s; }
-.animate-delay-2 { animation-delay: 0.2s; }
-.animate-delay-3 { animation-delay: 0.3s; }
-.animate-delay-4 { animation-delay: 0.4s; }
-.animate-delay-5 { animation-delay: 0.5s; }
-
-/* Duration Classes */
-.animate-duration-fast { animation-duration: 0.3s; }
-.animate-duration-normal { animation-duration: 0.5s; }
-.animate-duration-slow { animation-duration: 1s; }
-
-/* Floating Heart Element */
 .floating-heart {
-    position: fixed;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 20px;
-    z-index: 1000;
-    pointer-events: none;
-    animation: floatUp 6s linear infinite;
+  position: absolute;
+  bottom: -50px;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: floatUp var(--duration, 8s) linear infinite;
+  animation-delay: var(--delay, 0s);
 }
 
-.floating-heart:nth-child(odd) {
-    animation-duration: 8s;
-    font-size: 16px;
+.floating-heart img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(255, 107, 157, 0.3));
 }
 
-.floating-heart:nth-child(even) {
-    animation-duration: 10s;
-    font-size: 24px;
+.floating-heart:nth-child(1) { left: 10%; --duration: 7s; --delay: 0s; --float-x: 20px; }
+.floating-heart:nth-child(2) { left: 25%; --duration: 9s; --delay: 1s; --float-x: -15px; }
+.floating-heart:nth-child(3) { left: 40%; --duration: 8s; --delay: 2s; --float-x: 25px; }
+.floating-heart:nth-child(4) { left: 60%; --duration: 10s; --delay: 0.5s; --float-x: -20px; }
+.floating-heart:nth-child(5) { left: 75%; --duration: 7.5s; --delay: 1.5s; --float-x: 15px; }
+.floating-heart:nth-child(6) { left: 90%; --duration: 8.5s; --delay: 2.5s; --float-x: -25px; }
+
+/* ==========================================
+   2. HEART BURST - Explosion Effect
+   ========================================== */
+@keyframes heartBurst {
+  0% {
+    transform: translate(0, 0) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--burst-x), var(--burst-y)) scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
 }
 
-/* Sparkle Element */
-.sparkle {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    background: white;
-    border-radius: 50%;
-    z-index: 999;
-    pointer-events: none;
-    animation: sparkle 2s ease-in-out infinite;
+.heart-burst-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1000;
 }
 
-/* Heart Burst Effect */
 .heart-burst {
-    position: fixed;
-    color: #ff6b9d;
-    font-size: 30px;
-    z-index: 2000;
-    pointer-events: none;
-    animation: heartBurst 1s ease-out forwards;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  will-change: transform, opacity;
+  animation: heartBurst 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Transition Effects */
-.page-transition {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #ff6b9d, #feca57, #48dbfb, #ff9ff3);
-    background-size: 400% 400%;
-    z-index: 9999;
-    animation: gradientShift 2s ease-in-out;
+.heart-burst img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-/* Loading Spinner */
-.loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+/* Generate burst positions */
+.heart-burst:nth-child(1) { --burst-x: 100px; --burst-y: -100px; animation-delay: 0s; }
+.heart-burst:nth-child(2) { --burst-x: -100px; --burst-y: -100px; animation-delay: 0.1s; }
+.heart-burst:nth-child(3) { --burst-x: 100px; --burst-y: 100px; animation-delay: 0.2s; }
+.heart-burst:nth-child(4) { --burst-x: -100px; --burst-y: 100px; animation-delay: 0.3s; }
+.heart-burst:nth-child(5) { --burst-x: 0px; --burst-y: -120px; animation-delay: 0.15s; }
+.heart-burst:nth-child(6) { --burst-x: 0px; --burst-y: 120px; animation-delay: 0.25s; }
+.heart-burst:nth-child(7) { --burst-x: 120px; --burst-y: 0px; animation-delay: 0.05s; }
+.heart-burst:nth-child(8) { --burst-x: -120px; --burst-y: 0px; animation-delay: 0.35s; }
+
+/* ==========================================
+   3. HEART PULSE - Heartbeat Effect
+   ========================================== */
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.1);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.15);
+  }
+  40% {
+    transform: scale(1);
+  }
 }
 
-/* Performance Optimizations */
-.will-change-transform {
-    will-change: transform;
+.heart-pulse {
+  animation: heartPulse 1.5s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
 }
 
-.will-change-opacity {
-    will-change: opacity;
+/* ==========================================
+   4. HEART RAIN - Falling Hearts
+   ========================================== */
+@keyframes heartRain {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 50px)) rotate(var(--rotate-end, 360deg));
+    opacity: 0;
+  }
 }
 
-.gpu-accelerated {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
+.heart-rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
 }
 
-/* Reduced Motion Support */
+.heart-rain {
+  position: absolute;
+  top: -50px;
+  width: 35px;
+  height: 35px;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: heartRain var(--rain-duration, 5s) linear infinite;
+  animation-delay: var(--rain-delay, 0s);
+}
+
+.heart-rain img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(255, 107, 157, 0.3));
+}
+
+.heart-rain:nth-child(1) { left: 5%; --rain-duration: 4s; --rain-delay: 0s; --rotate-end: 180deg; }
+.heart-rain:nth-child(2) { left: 15%; --rain-duration: 5s; --rain-delay: 0.5s; --rotate-end: -180deg; }
+.heart-rain:nth-child(3) { left: 25%; --rain-duration: 4.5s; --rain-delay: 1s; --rotate-end: 270deg; }
+.heart-rain:nth-child(4) { left: 35%; --rain-duration: 6s; --rain-delay: 1.5s; --rotate-end: -270deg; }
+.heart-rain:nth-child(5) { left: 45%; --rain-duration: 5.5s; --rain-delay: 2s; --rotate-end: 360deg; }
+.heart-rain:nth-child(6) { left: 55%; --rain-duration: 4.8s; --rain-delay: 0.3s; --rotate-end: -360deg; }
+.heart-rain:nth-child(7) { left: 65%; --rain-duration: 5.2s; --rain-delay: 1.2s; --rotate-end: 180deg; }
+.heart-rain:nth-child(8) { left: 75%; --rain-duration: 4.3s; --rain-delay: 1.8s; --rotate-end: -180deg; }
+.heart-rain:nth-child(9) { left: 85%; --rain-duration: 5.8s; --rain-delay: 2.5s; --rotate-end: 270deg; }
+.heart-rain:nth-child(10) { left: 95%; --rain-duration: 4.6s; --rain-delay: 0.8s; --rotate-end: -270deg; }
+
+/* ==========================================
+   5. HEART GLOW - Glowing Effect
+   ========================================== */
+@keyframes heartGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255, 107, 157, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 107, 157, 1)) 
+            drop-shadow(0 0 30px rgba(255, 107, 157, 0.8));
+  }
+}
+
+.heart-glow {
+  animation: heartGlow 2s ease-in-out infinite;
+  will-change: filter;
+}
+
+.heart-glow img {
+  filter: inherit;
+}
+
+/* ==========================================
+   6. HEART BOUNCE - Bouncing Effect
+   ========================================== */
+@keyframes heartBounce {
+  0%, 100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(-25px);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.heart-bounce {
+  animation: heartBounce 1s infinite;
+  will-change: transform;
+}
+
+/* ==========================================
+   7. HEART SPIN - Rotation Effect
+   ========================================== */
+@keyframes heartSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.heart-spin {
+  animation: heartSpin 2s linear infinite;
+  will-change: transform;
+  display: inline-block;
+}
+
+/* ==========================================
+   8. HEART TRAIL - Mouse Follow Effect
+   ========================================== */
+@keyframes heartTrail {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.heart-trail {
+  position: fixed;
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  will-change: transform, opacity;
+  animation: heartTrail 1s ease-out forwards;
+  z-index: 9999;
+}
+
+.heart-trail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================
+   9. LOVE EXPLOSION - Complex Effect
+   ========================================== */
+@keyframes loveExplosion {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--ex), var(--ey)) scale(2);
+    opacity: 0;
+  }
+}
+
+.love-explosion-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.love-particle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  will-change: transform, opacity;
+  animation: loveExplosion 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.love-particle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Multiple particle directions */
+.love-particle:nth-child(1) { --ex: 200px; --ey: 0px; animation-delay: 0s; }
+.love-particle:nth-child(2) { --ex: 141px; --ey: 141px; animation-delay: 0.1s; }
+.love-particle:nth-child(3) { --ex: 0px; --ey: 200px; animation-delay: 0.2s; }
+.love-particle:nth-child(4) { --ex: -141px; --ey: 141px; animation-delay: 0.3s; }
+.love-particle:nth-child(5) { --ex: -200px; --ey: 0px; animation-delay: 0.4s; }
+.love-particle:nth-child(6) { --ex: -141px; --ey: -141px; animation-delay: 0.5s; }
+.love-particle:nth-child(7) { --ex: 0px; --ey: -200px; animation-delay: 0.6s; }
+.love-particle:nth-child(8) { --ex: 141px; --ey: -141px; animation-delay: 0.7s; }
+
+/* ==========================================
+   10. TRANSITION HEART - Page Transition
+   ========================================== */
+@keyframes transitionHeartFade {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+.transition-heart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  will-change: transform, opacity;
+  animation: transitionHeartFade 2s ease-out forwards;
+  z-index: 10000;
+}
+
+.transition-heart img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================
+   11. HEART WAVE - Wave Motion
+   ========================================== */
+@keyframes heartWave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.heart-wave-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart-wave {
+  width: 40px;
+  height: 40px;
+  animation: heartWave 1s ease-in-out infinite;
+  animation-delay: calc(var(--wave-index, 0) * 0.1s);
+  will-change: transform;
+}
+
+/* ==========================================
+   12. SPARKLE HEARTS - Twinkling Effect
+   ========================================== */
+@keyframes sparkleHeart {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.sparkle-heart {
+  animation: sparkleHeart 1.5s ease-in-out infinite;
+  animation-delay: var(--sparkle-delay, 0s);
+  will-change: opacity, transform;
+}
+
+/* ==========================================
+   13. RESPONSIVE SIZES
+   ========================================== */
+@media (max-width: 768px) {
+  .floating-heart,
+  .heart-rain {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .heart-burst,
+  .love-particle {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .transition-heart {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .heart-trail {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+  .floating-heart,
+  .heart-burst,
+  .heart-pulse,
+  .heart-rain,
+  .heart-glow,
+  .heart-bounce,
+  .heart-spin,
+  .love-particle,
+  .heart-trail,
+  .sparkle-heart,
+  .heart-wave,
+  .transition-heart {
+    animation: none !important;
+  }
+}
+
+/* ==========================================
+   14. PERFORMANCE OPTIMIZATIONS
+   ========================================== */
+.floating-hearts-container,
+.heart-burst-container,
+.heart-rain-container,
+.love-explosion-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Preload images hint */
+.heart img {
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
 }

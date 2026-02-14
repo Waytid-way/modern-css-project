@@ -421,26 +421,32 @@ class TransitionManager {
     }
 
     createHeartBurst() {
-        const overlay = document.getElementById('transitionOverlay');
-        const heartsCount = this.config.love.animations.heartBurstCount;
-        
-        for (let i = 0; i < heartsCount; i++) {
-            setTimeout(() => {
-                const heart = document.createElement('div');
-                heart.className = 'heart-burst';
-                heart.textContent = '❤️';
-                heart.style.left = '50%';
-                heart.style.top = '50%';
-                heart.style.animationDelay = `${Math.random() * 0.5}s`;
-                
-                overlay.appendChild(heart);
-                
+        // Use PNG heart animations instead of text hearts
+        if (window.HeartAnimations) {
+            window.HeartAnimations.triggerHeartBurst(window.innerWidth / 2, window.innerHeight / 2);
+        } else {
+            // Fallback to text-based hearts if PNG animations not available
+            const overlay = document.getElementById('transitionOverlay');
+            const heartsCount = this.config.love.animations.heartBurstCount;
+
+            for (let i = 0; i < heartsCount; i++) {
                 setTimeout(() => {
-                    if (overlay.contains(heart)) {
-                        overlay.removeChild(heart);
-                    }
-                }, 1000);
-            }, i * 50);
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-burst';
+                    heart.textContent = '❤️';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.animationDelay = `${Math.random() * 0.5}s`;
+
+                    overlay.appendChild(heart);
+
+                    setTimeout(() => {
+                        if (overlay.contains(heart)) {
+                            overlay.removeChild(heart);
+                        }
+                    }, 1000);
+                }, i * 50);
+            }
         }
     }
 
